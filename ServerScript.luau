@@ -1,78 +1,57 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local remote_input = ReplicatedStorage:WaitForChild("remote_input")
+local cam_update = ReplicatedStorage:WaitForChild("cam_update")
 
-local remote_input = game.ReplicatedStorage.remote_input
-local cam_update = game.ReplicatedStorage.cam_update
-
-local isGrabbing = false
 local maxForce = 50
 local targetPart
 local lastTarget
 
-local function highlight(part : Part)
-	local highlight = part:FindFirstChild("Highlight")
-	
-	if not highlight then
-		highlight = Instance.new("Highlight")
-		highlight.Name = "Highlight"
-		highlight.OutlineColor = Color3.new(0.101961, 0.490196, 1)
-		highlight.Parent = part
-		highlight.FillColor = Color3.new(0.101961, 0.490196, 1)
-	end
+local function highlight(part)
+	local highlight = part:FindFirstChild("Highlight") or Instance.new("Highlight")
+	highlight.Name = "Highlight"
+	highlight.OutlineColor = Color3.fromRGB(26, 125, 255)
+	highlight.FillColor = Color3.fromRGB(26, 125, 255)
+	highlight.Parent = part
 end
 
-local function apply_force(part : Part, target_direction, maxForce)
-	local attachment = part:FindFirstChild("Attachment")
-	local linearVelocity = part:FindFirstChild("LinearVelocity")
-	
-	if not attachment then
-		attachment = Instance.new("Attachment")
-		attachment.Name = "Attachment"
-		attachment.Parent = part
-	end
-	if not linearVelocity then
-		linearVelocity = Instance.new("LinearVelocity")
-		linearVelocity.Name = "LinearVelocity"
-		linearVelocity.Parent = part
-		linearVelocity.Attachment0 = attachment
-		linearVelocity.MaxForce = math.huge
-		linearVelocity.VelocityConstraintMode = Enum.VelocityConstraintMode.Vector
-	end
-	
-	local direction = (target_direction - part.Position).Unit
-	
-	local distance = (target_direction - part.Position).Magnitude
+local function apply_force(part, target_direction, maxForce)
+	local attachment = part:FindFirstChild("Attachment") or Instance.new("Attachment")
+	attachment.Name = "Attachment"
+	attachment.Parent = part
 
-	local force = math.min(maxForce, distance * 50)
-	
-	if distance < 1 then
-		linearVelocity.VectorVelocity = Vector3.zero
+	local linearVelocity = part:FindFirstChild("LinearVelocity") or Instance.new("LinearVelocity")
+	linearVelocity.Name = "LinearVelocity"
+	linearVelocity.Attachment0 = attachment
+	linearVelocity.MaxForce = math.huge
+	linearVelocity.VelocityConstraintMode = Enum.VelocityConstraintMode.Vector
+	linearVelocity.Parent = part
+
+	local displacement = target_direction - part.Position
+	local distance = displacement.Magnitude
+
+	if distance > 0 then
+		local force = math.min(maxForce, distance * 50)
+		linearVelocity.VectorVelocity = displacement.Unit * force
 	else
-		linearVelocity.VectorVelocity = direction * force
+		linearVelocity.VectorVelocity = Vector3.zero
 	end
 end
 
 remote_input.OnServerEvent:Connect(function(player, grab, targetParts)
-	isGrabbing = grab
-	targetPart = targetParts
-	if targetParts ~= nil then
+	targetPart = grab and targetParts or nil
+	if targetParts then
 		lastTarget = targetParts
 	end
 end)
 
 cam_update.OnServerEvent:Connect(function(player, target_direction)
-	if isGrabbing == true and targetPart ~= nil then
+	if targetPart then
 		apply_force(targetPart, target_direction, maxForce)
 		highlight(targetPart)
-	else
-		if lastTarget then
-			if lastTarget:FindFirstChild("Attachment") then
-				lastTarget:FindFirstChild("Attachment"):Destroy()
-			end
-			if lastTarget:FindFirstChild("LinearVelocity") then
-				lastTarget:FindFirstChild("LinearVelocity"):Destroy()
-			end
-			if lastTarget:FindFirstChild("Highlight") then
-				lastTarget:FindFirstChild("Highlight"):Destroy()
-			end
+	elseif lastTarget then
+		for _, name in ipairs({"Attachment", "LinearVelocity", "Highlight"}) do
+			local obj = lastTarget:FindFirstChild(name)
+			if obj then obj:Destroy() end
 		end
 	end
 end)
