@@ -1,4 +1,4 @@
-```lua
+
 local remote_input = game.ReplicatedStorage.remote_input
 local cam_update = game.ReplicatedStorage.cam_update
 
