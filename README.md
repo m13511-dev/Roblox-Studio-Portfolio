@@ -1,3 +1,1 @@
-Hello! This the portfolio for roblox studio of m13511. My speciality is mainly scripting and some basic building and UI design.
-You will find a variety of roblox studio projects in this repository.
-I'm still creating this repository so don't expect too much 😅
+This is a grabbing system made with luau. It functions by calculating the required place the grabbed object has to be in, and then applying a force on the block to move it there. The object will move faster the farther away it is from the wanted spot.
