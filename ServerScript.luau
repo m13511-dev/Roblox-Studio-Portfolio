@@ -1,11 +1,15 @@
+--// SERVICES //--
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local remote_input = ReplicatedStorage:WaitForChild("remote_input")
 local cam_update = ReplicatedStorage:WaitForChild("cam_update")
 
+--// VARIABLES //--
 local maxForce = 50
 local targetPart
 local lastTarget
 
+--// FUNCTIONS //--
+--  Highlights a given part by adding a highlight object if it doesn't already exist
 local function highlight(part)
 	local highlight = part:FindFirstChild("Highlight") or Instance.new("Highlight")
 	highlight.Name = "Highlight"
@@ -14,6 +18,9 @@ local function highlight(part)
 	highlight.Parent = part
 end
 
+--[[Moves the given part by adding an attachment and a linear velocity to it.
+	The farther away it is from the desired position, the faster it moves.
+]]
 local function apply_force(part, target_direction, maxForce)
 	local attachment = part:FindFirstChild("Attachment") or Instance.new("Attachment")
 	attachment.Name = "Attachment"
@@ -37,6 +44,12 @@ local function apply_force(part, target_direction, maxForce)
 	end
 end
 
+
+--// EVENT LISTENERS //--
+-- Waits for the local script to fire the remote event, passing the player, if the player is grabbing or not, and the part to be moved.
+-- player (Player) - the local player
+-- grab (bool) - passes whether the player is grabbing or not
+-- targetParts (Part) - the part to be moved
 remote_input.OnServerEvent:Connect(function(player, grab, targetParts)
 	targetPart = grab and targetParts or nil
 	if targetParts then
@@ -44,6 +57,9 @@ remote_input.OnServerEvent:Connect(function(player, grab, targetParts)
 	end
 end)
 
+-- Updates every frame to receive the current CFrame of the player's camera.
+-- player (Player) - the local player
+-- target_direction (Vector3) - the calculated direction where the block has to go
 cam_update.OnServerEvent:Connect(function(player, target_direction)
 	if targetPart then
 		apply_force(targetPart, target_direction, maxForce)
