@@ -1,4 +1,5 @@
-This is my portfolio! I will upload my projects here for everyone to see, though if you use it please credit me.
+![Roblox](https://img.shields.io/badge/Roblox-Studio-blue?logo=roblox)
+Welcome to my roblox studio portfolio! I will upload various projects here, including scripting projects, game mechanics, and some UI design (maybe).
 I'm specialized in luau scripting and basic building and UI design.
 
 //CURRENT PROJECTS//
