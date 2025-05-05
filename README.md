@@ -4,6 +4,8 @@ I'm specialized in luau scripting, and UI design.
 
 ## 💻 CURRENT PROJECTS
 - Grabbing system
+- Hatch
+- Weather System
 
 ## 📬 CONTACT ME
 - [Roblox studio](https://create.roblox.com/talent/creators/724989015)
