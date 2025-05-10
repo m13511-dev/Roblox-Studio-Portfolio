@@ -6,6 +6,7 @@ I'm specialized in luau scripting, and UI design.
 - Grabbing system
 - Hatch
 - Weather System
+- Music Areas System
 
 ## 📬 CONTACT ME
 - [Roblox studio](https://create.roblox.com/talent/creators/724989015)
