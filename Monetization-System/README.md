@@ -1,4 +1,4 @@
-**Monetization system**  
+##Monetization system  
 A purchase and gifting system which respects the server's authority, which combines gamepass and developer products. The system uses a verification layer, allowing a single item to either be owned through one time gamepass purchases or through developer products. The ownership is validated by combining the MarketPlaceService, together with a DataStore backend to store purchases.  
 To ensure the  security, all the validation is handled on the server through RemoteFunctions and RemoteEvents, preventing client tampering and system manipulation. The client is limited to UI interactions, while the server processes the data.  
 The system uses UpdateAsync in order to safely handle writes, while storing the data through a table, unique for each player. The system comes with safeguards such as:  
