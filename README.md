@@ -6,11 +6,11 @@ The entire project code won't be shown, only snippets and in some cases a module
 
 ## MAIN PROJECTS
 **Monetization system**  
-System that ensures server authority, combining gamepasses and developer products with secure validation, DataStore backend ownership, and anti-exploit safeguards.
+System that ensures server authority, combining gamepasses and developer products with secure validation, DataStore backend ownership, and anti-exploit safeguards.  
 -> [Repository link](https://github.com/m13511-dev/Roblox-Studio-Portfolio/tree/main/Modular-Weapon-System)
 
 **Modular weapon system**  
-Scalable third-person weapon system with runtime-based architecture, client-side prediction, and server-validated combat logic.
+Scalable third-person weapon system with runtime-based architecture, client-side prediction, and server-validated combat logic.  
 -> [Repository link](https://github.com/m13511-dev/Roblox-Studio-Portfolio/tree/main/Monetization-System)
 
 ## CONTACT ME
