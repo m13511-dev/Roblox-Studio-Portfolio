@@ -2,6 +2,7 @@
 ## ABOUT ME
 Roblox developer focused on clean and organized systems, and performance optimization.
 I build systems designed for real multiplayer environments, incorporating security in order to prevent exploits and unintended behaviours.
+The entire project code won't be shown, only snippets and in some cases a module.
 
 ## MAIN PROJECTS
 **Monetization system**  
