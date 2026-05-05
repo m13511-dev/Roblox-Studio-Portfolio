@@ -1,1 +1,0 @@
-This is a sound system, that is made so that if you want different places to have different music, you can achieve it with this. It can hold unlimited parts and you can customize it however you want. In the case that the player is not in any area, a default music will play.
