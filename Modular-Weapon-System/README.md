@@ -130,3 +130,7 @@ Click [here](https://github.com/m13511-dev/Roblox-Studio-Portfolio/blob/main/Mod
 - Allows new weapons to be created without modifying core systems
 - Supports modular behaviors
 - Centralized configuration improves scalability and maintainability
+
+
+
+Note: This isn't the complete system, just small snippets of the most important parts
