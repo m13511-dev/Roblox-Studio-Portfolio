@@ -107,3 +107,14 @@ end
 - Server replicates effects to all other clients after verification
 - Local player ignores replicated events to prevent duplication
 - Keeps responsiveness without sacrificing the server's authority
+
+## Runtime based weapon architecture
+Each weapon is represented by a runtime instance, combining weapon state and behaviour into a single modular unit.
+
+Click [here](https://github.com/m13511-dev/Roblox-Studio-Portfolio/blob/main/Modular-Weapon-System/CoreModule.luau) to view the code or click on the file named CoreModule.luau
+
+### Key characteristics
+- Each weapon instance is inside its own runtime, preventing shared logic between weapons
+- Behaviour modules are injected at runtime, allowing different weapons to define custom logic without modifying the core system
+- Metatables are used to provide methods, making the logic reusable
+- Runtimes are cached per player to avoid redundancy and improving performance
