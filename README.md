@@ -5,6 +5,8 @@ I build systems designed for real multiplayer environments, incorporating securi
 The entire project code won't be shown, only snippets and in some cases a module.
 
 ## MAIN PROJECTS
+-# More info can be found inside the corresponding repository
+
 **Monetization system**  
 System that ensures server authority, combining gamepasses and developer products with secure validation, DataStore backend ownership, and anti-exploit safeguards.  
 -> [Repository link](https://github.com/m13511-dev/Roblox-Studio-Portfolio/tree/main/Monetization-System)
