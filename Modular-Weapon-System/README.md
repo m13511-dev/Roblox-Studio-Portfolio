@@ -118,3 +118,15 @@ Click [here](https://github.com/m13511-dev/Roblox-Studio-Portfolio/blob/main/Mod
 - Behaviour modules are injected at runtime, allowing different weapons to define custom logic without modifying the core system
 - Metatables are used to provide methods, making the logic reusable
 - Runtimes are cached per player to avoid redundancy and improving performance
+
+## Data managed weapon configuration
+Weapons are defined through a modular configuration tables, allowing behaviour, visuals and stats to be modified without touching the core system
+
+Click [here](https://github.com/m13511-dev/Roblox-Studio-Portfolio/blob/main/Modular-Weapon-System/ExampleConfig.luau) to view the code or click on the file named ExampleConfig.luau
+
+### Key characteristics
+- No hardcoded weapon logic
+- Separates gameplay stats, visuals, and behavior into independent modules
+- Allows new weapons to be created without modifying core systems
+- Supports modular behaviors
+- Centralized configuration improves scalability and maintainability
